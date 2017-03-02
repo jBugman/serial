@@ -37,6 +37,8 @@ func openPort(name string, baud int, databits byte, parity Parity, stopbits Stop
 	}
 	var speed C.speed_t
 	switch baud {
+	case 921600: // used with UART radio
+		speed = 921600 // hacked in, as this value is missing in termios.h
 	case 115200:
 		speed = C.B115200
 	case 57600:
